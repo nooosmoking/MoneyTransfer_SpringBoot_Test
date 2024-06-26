@@ -7,7 +7,7 @@ import javax.security.sasl.AuthenticationException;
 
 @Component
 public class ExceptionHandler {
-    public Response handleException(Exception ex) {
+    public void handleException(Exception ex) {
         int status;
         String message;
 
@@ -32,6 +32,6 @@ public class ExceptionHandler {
         }
 
         String body = "{\"message\": \"" + ex.getMessage() + "\"}";
-        return new Response(status, message, body);
+
     }
 }

@@ -35,7 +35,7 @@ public class PaymentControllerImpl {
 //    }
 //
     @PostMapping("/payments")
-    public ResponseEntity<Payment> makePayment(@RequestBody Payment payment) throws NotEnoughMoneyException {
+    public ResponseEntity<Payment> makePayment(@RequestBody Payment payment) {
         paymentService.makePayment(payment);
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(payment);
     }

@@ -12,29 +12,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @ComponentScan(basePackages = "com.example")
 @EnableAspectJAutoProxy
 public class MoneyTransferApplicationConfig {
-    @Value("${db.url}")
-    private String dbUrl;
-
-    @Value("${db.user}")
-    private String dbUsername;
-
-    @Value("${db.password}")
-    private String dbPassword;
-
-    @Bean
-    public HikariConfig hikariConfig() {
-        HikariConfig hikariConfig = new HikariConfig();
-        hikariConfig.setJdbcUrl(dbUrl);
-        hikariConfig.setUsername(dbUsername);
-        hikariConfig.setPassword(dbPassword);
-        return hikariConfig;
-    }
-
-    @Bean
-    public HikariDataSource hikariDataSource() {
-        return new HikariDataSource(hikariConfig());
-    }
-
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

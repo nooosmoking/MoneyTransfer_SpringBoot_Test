@@ -1,5 +1,7 @@
 package com.example.services;
 
+import com.example.models.User;
+
 public interface BalanceService {
-    double getBalance(Request request);
+     double getBalance(User user);
 }

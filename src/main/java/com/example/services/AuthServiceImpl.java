@@ -29,26 +29,26 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public String signUp(SignupRequest signupRequest) throws UserAlreadyExistsException {
-        String login = signupRequest.getLogin();
+    public String signUp(User user) throws UserAlreadyExistsException {
+        String login = user.getLogin();
         if (usersRepository.findByLogin(login).isPresent()) {
             throw new UserAlreadyExistsException("User with login \"" + login + "\" already exists.");
         }
         String token = jwtTokenProvider.createToken(login);
-        usersRepository.save(new User(login, passwordEncoder.encode(signupRequest.getPassword()), 0, token));
+        usersRepository.save(new User(login, passwordEncoder.encode(user.getPassword()), 0, token));
         Logger.getInstance().logSignUp(login);
         return token;
     }
 
     @Override
-    public String signIn(SigninRequest signinRequest) throws NoSuchUserException, AuthenticationException {
-        String login = signinRequest.getLogin();
+    public String signIn(User user) throws NoSuchUserException, AuthenticationException {
+        String login = user.getLogin();
         Optional<User> optionalUser = usersRepository.findByLogin(login);
         if (optionalUser.isEmpty()) {
             throw new NoSuchUserException("No such user with login \"" + login + "\".");
         }
-        User user = optionalUser.get();
-        if (!passwordEncoder.matches(signinRequest.getPassword(), user.getPassword())) {
+//        User user = optionalUser.get();
+        if (!passwordEncoder.matches(user.getPassword(), user.getPassword())) {
             throw new AuthenticationException("Wrong password");
         }
         String token = jwtTokenProvider.createToken(login);

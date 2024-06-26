@@ -19,8 +19,8 @@ public class BalanceServiceImpl implements BalanceService {
     }
 
     @Override
-    public double getBalance(Request request) throws NoSuchUserException {
-        String login = request.getLogin();
+    public double getBalance(User user) throws NoSuchUserException {
+        String login = user.getLogin();
         Optional<User> optionalUser = usersRepository.findByLogin(login);
         if (optionalUser.isEmpty()) {
             throw new NoSuchUserException("User with login " + login + " not exists.");

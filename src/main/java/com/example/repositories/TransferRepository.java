@@ -1,6 +1,6 @@
 package com.example.repositories;
 
-import com.example.models.Transfer;
+import com.example.models.Payment;
 
-public interface TransferRepository extends CrudRepository<Transfer> {
+public interface TransferRepository extends CrudRepository<Payment> {
 }
