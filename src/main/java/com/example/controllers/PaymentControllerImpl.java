@@ -10,34 +10,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
-public class PaymentControllerImpl {
+public class PaymentControllerImpl implements PaymentController{
     private final PaymentService paymentService;
 
     @Autowired
     public PaymentControllerImpl(PaymentService paymentService) {
         this.paymentService = paymentService;
     }
-//
-//    @GetMapping("/payments")
-//    public List<Payment> paymentsGet(){
-//        return paymentService.getPayments();
-//    }
-//
-//    @GetMapping("/payments/{id}")
-//    public ResponseEntity<Payment> paymentsByIdGet(@PathVariable int id){
-//        Payment payment = paymentService.findById(id);
-//        return ResponseEntity.status(HttpStatus.ACCEPTED).body(payment);
-//    }
-//
-//    @GetMapping("/balance")
-//    public int balanceGet(){
-//        return paymentService.getBalance();
-//    }
-//
+
     @PostMapping("/payments")
-    public ResponseEntity<Payment> makePayment(@RequestBody Payment payment) {
+    public ResponseEntity<Void> makePayment(@RequestBody Payment payment) {
         paymentService.makePayment(payment);
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body(payment);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).build();
     }
 //
 //    @PutMapping("/payments")
