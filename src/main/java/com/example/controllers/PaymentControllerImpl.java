@@ -1,6 +1,8 @@
 package com.example.controllers;
 
 import com.example.exceptions.NotEnoughMoneyException;
+import com.example.models.User;
+import com.example.models.UserChangeInfoRequest;
 import com.example.services.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,9 +21,34 @@ public class PaymentControllerImpl implements PaymentController{
     }
 
     @PostMapping("/payments")
-    public ResponseEntity<Void> makePayment(@RequestBody Payment payment) {
+    public HttpStatus makePayment(@RequestBody Payment payment) {
         paymentService.makePayment(payment);
-        return ResponseEntity.status(HttpStatus.ACCEPTED).build();
+        return HttpStatus.OK;
+    }
+
+    @Override
+    public HttpStatus signIn(User user) {
+        return null;
+    }
+
+    @Override
+    public HttpStatus signUp(User user) {
+        return null;
+    }
+
+    @Override
+    public HttpStatus changeUserInfo(UserChangeInfoRequest userChangeInfoRequest) {
+        return null;
+    }
+
+    @Override
+    public HttpStatus addUserInfo(UserChangeInfoRequest userChangeInfoRequest) {
+        return null;
+    }
+
+    @Override
+    public HttpStatus deleteUserInfo(UserChangeInfoRequest userChangeInfoRequest) {
+        return null;
     }
 //
 //    @PutMapping("/payments")

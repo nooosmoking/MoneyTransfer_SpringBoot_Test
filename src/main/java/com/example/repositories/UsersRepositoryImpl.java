@@ -20,7 +20,6 @@ public class UsersRepositoryImpl implements UsersRepository {
         this.dataSource = dataSource;
     }
 
-    //
     @Override
     public List<User> findAll() {
         return null;

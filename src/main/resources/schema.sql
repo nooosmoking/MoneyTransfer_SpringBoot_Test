@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS emails (
     email VARCHAR(1000) NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS transfers (
+CREATE TABLE IF NOT EXISTS payments (
     id SERIAL PRIMARY KEY NOT NULL,
     amount INTEGER NOT NULL CHECK (amount > 0),
     sender_id INTEGER REFERENCES users(id) NOT NULL,
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS transfers (
     date_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
     );
 
-INSERT INTO users (login, password, balance, full_name, birthday) VALUES ('Ann', 'aa', 100, 'Чер Анна Андреевна', '2000-03-13'), ('Ivan', 'ii', 100, 'Суров Иван Сергеевич', '1999-04-14'), ('Nikolay', 'nn', 100, 'Алев Николай Алеевич', '2010-10-10');
+INSERT INTO users (login, password, balance, full_name, birthday) VALUES ('Ann', '?', 100, 'Чер Анна Андреевна', '2000-03-13'), ('Ivan', 'ii', 100, 'Суров Иван Сергеевич', '1999-04-14'), ('Nikolay', 'nn', 100, 'Алев Николай Алеевич', '2010-10-10');
 
 INSERT INTO phones (user_id, phone_number) VALUES (1, '900'), (2, '+79145588293'), (3, '000000000');
 
