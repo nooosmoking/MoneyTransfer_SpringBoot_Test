@@ -50,17 +50,4 @@ public class PaymentControllerImpl implements PaymentController{
     public HttpStatus deleteUserInfo(UserChangeInfoRequest userChangeInfoRequest) {
         return null;
     }
-//
-//    @PutMapping("/payments")
-//    public ResponseEntity<Payment> changePayment(@RequestBody Payment payment){
-//        paymentService.changePayment(payment);
-//        return ResponseEntity.status(HttpStatus.ACCEPTED).body(payment);
-//    }
-//
-//
-//    @DeleteMapping("/payments/{id}")
-//    public ResponseEntity<Void> deletePayment(@PathVariable int id){
-//        paymentService.deletePayment(id);
-//        return ResponseEntity.status(HttpStatus.ACCEPTED).build();
-//    }
 }

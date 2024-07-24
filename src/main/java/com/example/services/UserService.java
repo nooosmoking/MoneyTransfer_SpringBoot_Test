@@ -7,7 +7,7 @@ import com.example.models.User;
 import javax.security.sasl.AuthenticationException;
 
 
-public interface AuthService {
+public interface UserService {
     String signUp(User user) throws UserAlreadyExistsException;
 
     String signIn(User user) throws NoSuchUserException, AuthenticationException;

@@ -16,13 +16,13 @@ import java.util.Optional;
 
 @Service
 @Transactional
-public class AuthServiceImpl implements AuthService {
+public class UserServiceImpl implements UserService {
     private final UsersRepository usersRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtTokenProvider jwtTokenProvider;
 
     @Autowired
-    public AuthServiceImpl(UsersRepository usersRepository, PasswordEncoder passwordEncoder, JwtTokenProvider jwtTokenProvider) {
+    public UserServiceImpl(UsersRepository usersRepository, PasswordEncoder passwordEncoder, JwtTokenProvider jwtTokenProvider) {
         this.usersRepository = usersRepository;
         this.passwordEncoder = passwordEncoder;
         this.jwtTokenProvider = jwtTokenProvider;
