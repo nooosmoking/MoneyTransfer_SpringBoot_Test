@@ -2,9 +2,44 @@
 <project version="4">
   <component name="RemoteRepositoriesConfiguration">
     <remote-repository>
+      <option name="id" value="nexus3-dev" />
+      <option name="name" value="nexus3-dev" />
+      <option name="url" value="https://nexus-ci.delta.sbrf.ru/repository/maven-lib-dev" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="central" />
       <option name="name" value="Central Repository" />
       <option name="url" value="https://repo.maven.apache.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="nexus3-release" />
+      <option name="name" value="nexus3-release" />
+      <option name="url" value="https://nexus-ci.delta.sbrf.ru/repository/maven-lib-release" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="nexus3-distr" />
+      <option name="name" value="nexus3-distr" />
+      <option name="url" value="https://nexus-ci.delta.sbrf.ru/repository/maven-distr-release/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="internal" />
+      <option name="name" value="internal" />
+      <option name="url" value="https://nexus-ci.delta.sbrf.ru/repository/maven-proxy-lib-internal/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Central Repository" />
+      <option name="url" value="https://nexus-ci.delta.sbrf.ru/repository/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven-central_proxy" />
+      <option name="name" value="maven-central_proxy" />
+      <option name="url" value="https://nexus-ci.delta.sbrf.ru/repository/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="nexus3-int" />
+      <option name="name" value="nexus3-int" />
+      <option name="url" value="https://nexus-ci.delta.sbrf.ru/repository/maven-lib-int/" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="central" />

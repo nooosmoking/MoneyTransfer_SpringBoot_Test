@@ -4,6 +4,7 @@ import com.example.exceptions.NoSuchUserException;
 import com.example.exceptions.UserAlreadyExistsException;
 import com.example.logger.Logger;
 import com.example.models.User;
+import com.example.models.UserChangeInfoRequest;
 import com.example.repositories.UsersRepository;
 import com.example.security.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,42 +20,47 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
     private final UsersRepository usersRepository;
     private final PasswordEncoder passwordEncoder;
-    private final JwtTokenProvider jwtTokenProvider;
 
     @Autowired
-    public UserServiceImpl(UsersRepository usersRepository, PasswordEncoder passwordEncoder, JwtTokenProvider jwtTokenProvider) {
+    public UserServiceImpl(UsersRepository usersRepository, PasswordEncoder passwordEncoder) {
         this.usersRepository = usersRepository;
         this.passwordEncoder = passwordEncoder;
-        this.jwtTokenProvider = jwtTokenProvider;
     }
 
     @Override
-    public String signUp(User user) throws UserAlreadyExistsException {
+    public void signUp(User user) throws UserAlreadyExistsException {
         String login = user.getLogin();
         if (usersRepository.findByLogin(login).isPresent()) {
             throw new UserAlreadyExistsException("User with login \"" + login + "\" already exists.");
         }
-        String token = jwtTokenProvider.createToken(login);
-        usersRepository.save(new User(login, passwordEncoder.encode(user.getPassword()), 0, token));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        usersRepository.save(user);
         Logger.getInstance().logSignUp(login);
-        return token;
+
     }
 
     @Override
-    public String signIn(User user) throws NoSuchUserException, AuthenticationException {
+    public void signIn(User user) throws NoSuchUserException {
         String login = user.getLogin();
         Optional<User> optionalUser = usersRepository.findByLogin(login);
         if (optionalUser.isEmpty()) {
             throw new NoSuchUserException("No such user with login \"" + login + "\".");
         }
-//        User user = optionalUser.get();
-        if (!passwordEncoder.matches(user.getPassword(), user.getPassword())) {
-            throw new AuthenticationException("Wrong password");
-        }
-        String token = jwtTokenProvider.createToken(login);
-        user.setJwtToken(token);
-        usersRepository.update(user);
         Logger.getInstance().logSignIn(login);
-        return token;
+    }
+
+    @Override
+    public void changeInfo(UserChangeInfoRequest userChangeInfoRequest) {
+
+    }
+
+    @Override
+    public void deleteInfo(UserChangeInfoRequest userChangeInfoRequest) {
+
+    }
+
+    @Override
+    public void addInfo(UserChangeInfoRequest userChangeInfoRequest) {
+
     }
 }

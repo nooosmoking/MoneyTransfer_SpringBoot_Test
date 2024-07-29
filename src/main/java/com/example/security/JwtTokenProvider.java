@@ -65,11 +65,11 @@ public class JwtTokenProvider {
         return null;
     }
 
-    public String doFilter(Map<String, String> headers) throws JwtAuthenticationException {
-        String token = resolveToken(headers);
-        if (token == null || !validateToken(token)) {
-            throw new JwtAuthenticationException("Error while authenticate.");
-        }
-        return getLogin(token);
-    }
+//    public String doFilter(Map<String, String> headers) throws JwtAuthenticationException {
+//        String token = resolveToken(headers);
+//        if (token == null || !validateToken(token)) {
+//            throw new JwtAuthenticationException("Error while authenticate.");
+//        }
+//        return getLogin(token);
+//    }
 }
